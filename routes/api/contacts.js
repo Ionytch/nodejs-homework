@@ -15,7 +15,7 @@ router.get('', async (req, res, next) => {
     const result=await contacts.listContacts();
      res.json(result)
   } catch (error) {
-    res.status(500).json ({message:error.message})
+    next(error)
   }
 })
 
@@ -30,7 +30,6 @@ try {
 } catch (error) {
   next(error)
 }
-next ()
 })
 
 router.post('/', async (req, res, next) => {
