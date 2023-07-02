@@ -8,7 +8,6 @@ const contactSchema=new Schema(
         },
         email: {
           type: String,
-        //   match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
           required: [true, 'Set email for contact'],
           unique:true,
         },
