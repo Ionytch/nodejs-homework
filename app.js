@@ -1,6 +1,10 @@
 const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
+const mongoose=require ('mongoose')
+require ('dotenv').config()
+const {DB_HOST, PORT}=process.env
+// const app = require('./app')
 
 const contactsRouter = require('./routes/api/contacts')
 
@@ -21,5 +25,10 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message })
 })
+
+mongoose.connect(DB_HOST).then(()=>app.listen(PORT,()=>console.log('server started')))
+.catch((err)=>{
+  console.error(err.message) 
+  process.exit(1)})
 
 module.exports = app
