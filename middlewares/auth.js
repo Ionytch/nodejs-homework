@@ -4,8 +4,8 @@ const User = require('../models/user')
 const {JWT_SECRET}=process.env
 
 const auth=async(req, res, next)=>{
-const authHeader=req.headers.authorization||''
-const [type, token]=authHeader.split(' ')
+const authHeader=req.headers.authorization||'';
+const [type, token]=authHeader.split(' ');
 if (type!=='Bearer'){
     res.status(401).json({ message: 'token type is not supported' })
 }
@@ -17,7 +17,7 @@ try {
     const payload=jwt.verify(token, JWT_SECRET)
     const user=await User.findById(payload.id)
     req.user=user
-    if(user.token!==token){
+    if(user.token!==token||!user){
         res.status(401).json({ message: 'unauthorized' }) 
     }
     console.log ('verified')
