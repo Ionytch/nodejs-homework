@@ -18,7 +18,7 @@ try {
     const user=await User.findById(payload.id)
     req.user=user
     if(user.token!==token){
-        res.status(401).json({ message: 'unathorized' }) 
+        res.status(401).json({ message: 'unauthorized' }) 
     }
     console.log ('verified')
 } catch (error) {
