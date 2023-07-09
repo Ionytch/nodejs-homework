@@ -1,4 +1,4 @@
-const {Schema, model}=require('mongoose')
+const {Schema, model, Types}=require('mongoose')
 
 const userSchema=new Schema(
     {
@@ -16,7 +16,14 @@ const userSchema=new Schema(
           enum: ["starter", "pro", "business"],
           default: "starter"
         },
-        token: String
+        contacts:{
+          type:[Types.ObjectId],
+          ref:'contact'
+        },
+        token:{
+          type: String,
+          default:""
+        } 
       },
       {
         timestamps:true,
