@@ -8,6 +8,7 @@ const {auth}=require('../../middlewares')
 router.post('/registration', controllerWrapper(controller.registration))
 router.post('/login', controllerWrapper(controller.login))
 router.post('/logout', controllerWrapper (auth),controllerWrapper(controller.logout))
+router.get('/current',controllerWrapper (auth),controllerWrapper(controller.getCurrent))
 
 
 module.exports=router

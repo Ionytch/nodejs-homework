@@ -14,9 +14,7 @@ const registration = async(req, res, next)=>{
         id: result._id,
         email,
     })
-    // console.log({email, password})
-
-    // res.json({ok:true})
+   
 }
 
 module.exports=registration;
