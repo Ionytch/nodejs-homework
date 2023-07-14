@@ -9,6 +9,8 @@ router.post('/registration', controllerWrapper(controller.registration))
 router.post('/login', controllerWrapper(controller.login))
 router.post('/logout', controllerWrapper (auth),controllerWrapper(controller.logout))
 router.get('/current',controllerWrapper (auth),controllerWrapper(controller.getCurrent))
+router.post('/refresh', controllerWrapper(controller.refreshTokens))
+
 
 
 module.exports=router
