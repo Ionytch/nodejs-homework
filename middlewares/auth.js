@@ -15,9 +15,10 @@ if(!token){
 }
 try {
     const payload=jwt.verify(token, JWT_SECRET)
-    const user=await User.findById(payload.id)
+    const user=await User.findById(payload.userID)
     req.user=user
-    if(user.token!==token||!user){
+    // if(user.token!==token||!user)
+    if(payload.type !== 'access'){
         res.status(401).json({ message: 'unauthorized' }) 
     }
     console.log ('verified')

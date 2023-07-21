@@ -1,7 +1,8 @@
 const User = require("../../models/user")
 const bcrypt=require('bcrypt')
-const jwt=require('jsonwebtoken')
-const{JWT_SECRET}=process.env
+// const jwt=require('jsonwebtoken')
+const authHelper = require("../../helpers/authHelper")
+// const{JWT_SECRET}=process.env
 
 const login = async(req,res,next)=>{
 const {email, password}=req.body
@@ -16,9 +17,12 @@ if(!isValidPassword){
 
 }
 
-const token=jwt.sign({id:user._id}, JWT_SECRET, {expiresIn:'1h'})
-await User.findByIdAndUpdate(user._id, {token})
+// const token=jwt.sign({id:user._id}, JWT_SECRET, {expiresIn:'1h'})
+// await User.findByIdAndUpdate(user._id, {token})
 
-res.json({token, id:user._id})
+// res.json({token, id:user._id})
+
+const tokens=await authHelper.updateTokens(user.id)
+return res.json(tokens)
 }
 module.exports=login
