@@ -4,6 +4,8 @@ const logout=require('./logout')
 const getCurrent=require('./getCurrent')
 const refreshTokens=require('./refreshTokens')
 const uploadImage=require('../auth/uploadImage')
+const verifyEmail=require('./verifyEmail')
+const resendVerification=require('./resendVerification')
 
 
 module.exports={
@@ -13,4 +15,6 @@ module.exports={
     getCurrent,
     refreshTokens,
     uploadImage,
+    verifyEmail,
+    resendVerification,
 }
