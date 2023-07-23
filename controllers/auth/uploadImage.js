@@ -5,12 +5,9 @@ const Jimp = require("jimp")
 
 
 const uploadImage=async(req, res)=>{
-    // console.log ('user =', req.user)
-    // const {_id}=req.user
     if(!req.file){
         res.status(400).json ({message:'file is required'})
     }
-    // console.log('user id=', req.user.id)
     
     
 

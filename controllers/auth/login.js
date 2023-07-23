@@ -11,6 +11,10 @@ if(!user){
     res.status(401).json({ message: 'Email is not valid' })
 }
 
+if(!user.verify){
+    res.status(401).json({ message: 'Email is not verified' })
+}
+
 const isValidPassword= await bcrypt.compare(password, user.password)
 if(!isValidPassword){
     res.status(401).json({ message: 'Password is not valid' })

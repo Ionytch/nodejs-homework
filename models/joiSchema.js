@@ -11,4 +11,8 @@ const contactsFavoriteSchema=joi.object({
     favorite: joi.boolean().required()
 })
 
-module.exports={contactsSchema, contactsFavoriteSchema}
+const emailSchema=joi.object({
+  email:joi.string().required()
+})
+
+module.exports={contactsSchema, contactsFavoriteSchema, emailSchema}
